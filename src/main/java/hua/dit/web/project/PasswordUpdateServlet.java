@@ -1,4 +1,4 @@
-package dit;
+package hua.dit.web.project;
 
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -30,21 +30,21 @@ public class PasswordUpdateServlet extends HttpServlet {
 	    response.setContentType("text/html;charset=UTF-8");
 	    PrintWriter out = response.getWriter();
 	    
-	    //Gather parameters from HTML fields on update password.
+	    // 1. Stick to getParameter because the HTML is sending standard form fields
 	    String username = request.getParameter("username");
 	    String oldPass = request.getParameter("oldPassword");
 	    String newPass = request.getParameter("newPassword");
 	    
-	    //Hash passwords for user info safety.
-	    String oldPassHash = hashPassword(oldPass);
-	    String newPassHash = hashPassword(newPass);
+	    // 2. FIX: Use your 'Util' class for hashing instead of the old internal method
+	    String oldPassHash = Util.getHash256(oldPass);
+	    String newPassHash = Util.getHash256(newPass);
 	    
 	    // 3. Match case exactly with "projectDB" class name
 	    boolean isSuccess = projectDB.updatePassword(username, oldPassHash, newPassHash);
 	    
-	    // 4. Print your required project header and feedback message directly to the screen
+	    // 4. Output the HTML response
 	    out.println("<html><body>");
-	    out.println("<h1>Project of Anastasis Drougas</h1>"); // Mandatory Name Header
+	    out.println("<h1>Project of Anastasis Drougas</h1>");
 	    if (isSuccess) {
 	        out.println("<p style='color:green; font-weight:bold;'>Success! Your password has been securely updated.</p>");
 	    } else {
@@ -52,23 +52,5 @@ public class PasswordUpdateServlet extends HttpServlet {
 	    }
 	    out.println("<br><a href='html/passwordUpdate.html'>Go Back</a>");
 	    out.println("</body></html>");
-	}
-
-	
-	private String hashPassword(String password) {
-		try {
-			if (password == null) return null;
-			MessageDigest digest = MessageDigest.getInstance("SHA-256");
-			byte[] hash = digest.digest(password.getBytes("UTF-8"));
-			StringBuilder hexString = new StringBuilder();
-			for (byte b : hash) {
-				String hex = Integer.toHexString(0xff & b);
-				if (hex.length() == 1) hexString.append('0');
-				hexString.append(hex);
-			}
-			return hexString.toString();
-		} catch (Exception e) {
-			throw new RuntimeException("Hashing failed", e);
-		}
 	}
 }

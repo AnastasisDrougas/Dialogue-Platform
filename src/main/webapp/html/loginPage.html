@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Web Applications Project - Login</title>
+	<link href="/Dialogue-Platform/css/pagestyle.css" rel="stylesheet">
 </head>
 <body>
-	<h1>Welcome to the DialoguePlatform!!</h1>
-	Test test test...
+	<h1>Welcome To The Dialogue Platform</h1>
+	<div class="area">
+        <h2>Login</h2>
+        
+        <form id="passwordForm" action="/Dialogue-Platform/LoginServlet" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+            <br>
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" autocomplete="off">
+            <br>
+            
+        	<input type="reset" value="Reset">
+            <input type="submit" id="register-button" value="Login">
+        </form>
+        
+        <div id="output-div-1" class="output-area" style="color: red; margin-top: 10px; font-weight: bold;"></div>
+    </div>
+    <script src="/Dialogue-Platform/js/login.js"></script>
 </body>
 </html>

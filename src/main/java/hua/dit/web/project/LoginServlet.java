@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * Servlet implementation class LoginServlet
+ */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -19,12 +22,13 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/login.html");
+        response.sendRedirect(request.getContextPath() + "/loginPage.html");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+        
+    	request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
@@ -39,24 +43,27 @@ public class LoginServlet extends HttpServlet {
         
         //Hash password for user info privacy.
         String passHash = Util.getHash256(password);
-        int userId = projectDB.authenticateUser(username, passHash);
+        
+        int userId = projectDB.authenticateUser(username, passHash); //returns userID if someone matched the username and password in the db, if not returns -1.
         
         out.println("<!DOCTYPE html>");
         out.println("<html>");
-        out.println("<head><meta charset='UTF-8'><title>Login Result</title></head>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'><title>Login Result</title>");
+        out.println("    <link rel='stylesheet' href='" + request.getContextPath() + "/css/pagestyle.css'>");
+        out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Project of Anastasis Drougas</h1>"); // Mandatory Name Header
         
         if (userId != -1) {
+        	//create session, to store the user data on the server, so that they do not have to login every time.
             HttpSession session = request.getSession(true); 
             session.setAttribute("userId", userId);
             session.setAttribute("username", username);
             
-            out.println("<p style='color:green; font-weight:bold;'>Success! Welcome back, " + username + ".</p>");
-            out.println("<br><a href='" + request.getContextPath() + "/main_forum.jsp'>Enter Dialogue Platform</a>");
+            response.sendRedirect(request.getContextPath() + "/mainMenu.jsp");
         } else {
             out.println("<p style='color:red; font-weight:bold;'>Error: Invalid username or password.</p>");
-            out.println("<br><a href='" + request.getContextPath() + "/login.html'>Try Again</a>");
+            out.println("<br><a href='" + request.getContextPath() + "/html/loginPage.html' class=\"btnlink\">Try Again</a>");
         }
         
         out.println("</body></html>");

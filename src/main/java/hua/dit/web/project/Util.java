@@ -9,17 +9,14 @@ import java.util.List;
 
 public class Util {
 
-	/** 
-	 * Ensure that we will not create an instance of this class 
-	 */
+	/** Ensure that we will not create an instance of this class */
 	private Util() {
 		
 	}
 	
-	/**
-	 * SHA (Secure Hash Algorithm) 256
-	 * @see <a href="https://www.baeldung.com/sha-256-hashing-java">Read more...</a>
-	 */
+	// Hashing in Java
+	// https://www.baeldung.com/sha-256-hashing-java
+	
 	public static String getHash256(final String str) {
 		if (str == null) return null;
 		try {
@@ -43,22 +40,21 @@ public class Util {
 	    return hexString.toString();
 	}
 	
-	/** 
-	 * For testing purposes 
-	 */
+	/** For testing purposes */
 	public static void main(String[] args) {
 		System.out.println(">> Util - main() - START - " + new Date());
 		System.out.println();
-
-		final List<String> strList = Arrays.asList("t", "test", "tim", "vas", "maria", "eleni");
-		strList.forEach( str -> { 
-			final String hash_value = getHash256(str);
-			System.out.println(str + "\t-->\t" + hash_value);
+		
+		final List<String> userList = Arrays.asList("usera", "userb", "userc");
+		userList.forEach( user -> { 
+			// Keep Last Character as a Password
+			final String password = "" + user.charAt(user.length()-1);
+			final String password_hash = getHash256(password);
+			System.out.println(user + " : " + password + " :: " + password_hash);
 		});
 		
 		System.out.println();
 		System.out.println(">> Util - main() - END - " + new Date());
-		
 	}
 	
 }

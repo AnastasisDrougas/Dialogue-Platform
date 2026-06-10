@@ -36,7 +36,7 @@ public class SendMessageServlet extends HttpServlet {
             return;
         }
         
-        //Get the parameters from mainForum jsp and the user 	session.
+        //Get the parameters from mainForum jsp and the user session.
         String topicIdParam = request.getParameter("topicId");
         String messageText  = request.getParameter("messageText");
         int userId = (Integer) session.getAttribute("userId");

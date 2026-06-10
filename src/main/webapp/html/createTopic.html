@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Create Topic</title>
+<link href="/Dialogue-Platform/css/pagestyle.css" rel="stylesheet">
+</head>
+<body>
+	<h2>Add a New Topic</h2>
+    
+    <form id="topicForm">
+        <div>
+            <label for="topicTitle">Topic Title:</label>
+            <input type="text" id="topicTitle" required>
+        </div>
+        <div>
+            <label for="topicDesc">Description:</label>
+            <textarea id="topicDesc" required></textarea>
+        </div>
+        <button type="submit">Submit Topic</button>
+    </form>
+    <p id="message"></p>
+    
+    <script src="/Dialogue-Platform/js/new_topic.js"></script>
+</body>
+</html>

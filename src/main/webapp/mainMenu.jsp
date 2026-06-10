@@ -36,6 +36,13 @@
             Update Your Password.
         </a>
         
+        <br>
+        
+         <a href="<%= request.getContextPath() %>/html/createTopic.html" class="btnlink">
+            Add Your Topic To The Platform.
+            
+        </a>
+        
     </div>   
     
         

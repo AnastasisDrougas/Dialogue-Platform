@@ -84,7 +84,6 @@ public class projectDB {
 	        t.printStackTrace();
 	        return -1;
 	    } finally {
-	        
 	        try { if (rs != null) rs.close(); } catch (Exception e) {}
 	        try { if (pst != null) pst.close(); } catch (Exception e) {}
 	        try { if (conn != null) conn.close(); } catch (Exception e) {}
@@ -119,7 +118,6 @@ public class projectDB {
 	         e.printStackTrace();
 	         
 	     } finally {
-	         
 	         try { if (rs != null) rs.close(); } catch (Exception e) {}
 	         try { if (pst != null) pst.close(); } catch (Exception e) {}
 	         try { if (conn != null) conn.close(); } catch (Exception e) {}
@@ -179,6 +177,32 @@ public class projectDB {
 	        try { if (pstInsert != null) pstInsert.close(); } catch (Exception e) {}
 	        try { if (conn != null) conn.close(); } catch (Exception e) {}
 	    }
+	}
+	
+	
+    public static boolean addTopic(Topic topic) {
+
+    	String sql = "INSERT INTO topics VALUES (null, ?, ?)";
+    	Connection conn = null;
+    	PreparedStatement pst = null;
+		try {
+			//execute sql.
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, topic.getTitle());
+			pst.setString(2, topic.getDescription());
+			
+			
+		
+			return pst.executeUpdate() > 0;
+		
+		} catch(Exception e) {
+		e.printStackTrace();
+		return false;
+		}finally {
+	        try { if (pst != null) pst.close(); } catch (Exception e) {}
+	        try { if (conn != null) conn.close(); } catch (Exception e) {}
+		}
 	}
 
 }

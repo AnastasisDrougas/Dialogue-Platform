@@ -11,24 +11,32 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f9f9f9;
+    background-color: #241f31;
     padding: 20px;
 }
 
 h1 {
-    color: darkblue;
+    color: #33d17a;
     font-size: 2.5rem; 
     text-align: center;
     margin-bottom: 20px;
 }
 
+h2 {
+    color: #2ec27e;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
 form {
     padding: 30px 40px; 
-    border: 1px dashed gray;
+    border: 1px dashed #3d3846;
     border-radius: 20px;
     width: 100%;
     max-width: 650px; 
-    background-color: aliceblue;
+    background-color: #5e5c64;
     font-size: 1.2rem;
 }
 
@@ -58,7 +66,7 @@ input[type=reset], input[type=submit] {
 .btnlink {
     display: block;            
     margin: 40px auto 0 auto;  
-    background-color: lightgray;
+    background-color: rgb(154, 153, 150);
     color: black !important;   
     text-decoration: none;    
     text-align: center;       

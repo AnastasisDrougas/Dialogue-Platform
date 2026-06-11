@@ -29,7 +29,7 @@ public class TopicsServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	
-	    Topic topic = ServletUtil.getRequestData(Topic.class,request);
+	    Topic topic = ServletUtil.getRequestData(Topic.class,request); //creates new Topic object.
 	    
 	    boolean success = projectDB.addTopic(topic);
 

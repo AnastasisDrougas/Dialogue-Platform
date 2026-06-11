@@ -28,40 +28,41 @@ pageEncoding="UTF-8"%>
 	<%
 		//handle status and errors after the user presses submit message.
 		String status = request.getParameter("status");
-		String error = request.getParameter("eror");
+		String error = request.getParameter("error");
 		String msgCount = request.getParameter("msgCount");	
 		
 		
 		if ("success".equals(status)){
 	%>
 		<div class="area">
-	            Your message has been posted successfully!
+	            <h2>Your message has been posted successfully!</h2>
 	            <br>
-	            <span style="font-weight: normal; font-size: 14px;">
+	            <h2>
 	                There are now <strong><%= msgCount %></strong> total messages written about this specific topic.
-	            </span>
+	            </h2>
 	        </div>
 	<%
 	    } else if ("missingfields".equals(error)) {
 	%>
-		<div>
+		<h2>
 	            Please fill out all required fields before submitting.
-	    </div>
+	    </h2>
 	<%
     	} else if ("dbfail".equals(error)) {
 	%>
-        <div>
+        <h2>
            Database error: Could not process your request!
-        </div>
+        </h2>
 	<%
 	    }
 	%>
-	
+	<h2>Project of Anastasis Drougas</h2>
+	<br>
 	<h1>What would you like to talk about today?</h1>
 	<div>
 		<h2>Send a Message</h2>
 		<br>
-		<p>Logged in as: <strong><%= username %></strong></p>
+		<h2>Logged in as: <strong><%= username %></strong></h2>
 		
 		<form id="messageForm" action="<%= request.getContextPath() %>/SendMessageServlet" method="POST">
             <input type="hidden" name="userId" value="<%= userId %>">

@@ -9,10 +9,8 @@
 </head>
 <body>
 	<div class="area">
-        
-        <h2>Successful Login!<h2>
-        
-    </div>  
+       <h2>Successful Login! Project of Anastasis Drougas<h2>
+   </div>  
     
     <div class="area">
     
@@ -25,23 +23,15 @@
         
     <div class="area"> 
      
-        <a href="<%= request.getContextPath() %>/mainForum.jsp" class="btnlink">
-            Enter Dialogue Platform.
-        </a>
+       <a href="<%= request.getContextPath() %>/mainForum.jsp" class="btnlink"> Send A Message.</a>
         
-        <br>
-        <br>
+       <br>
         
-         <a href="<%= request.getContextPath() %>/html/passwordUpdate.html" class="btnlink">
-            Update Your Password.
-        </a>
+       <a href="<%= request.getContextPath() %>/html/passwordUpdate.html" class="btnlink"> Update Your Password.</a>
+       
+       <br>
         
-        <br>
-        
-         <a href="<%= request.getContextPath() %>/html/createTopic.html" class="btnlink">
-            Add Your Topic To The Platform.
-            
-        </a>
+       <a href="<%= request.getContextPath() %>/html/createTopic.html" class="btnlink"> Add Your Topic To The Platform.</a>
         
     </div>   
     

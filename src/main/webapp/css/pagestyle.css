@@ -16,14 +16,14 @@ body {
 }
 
 h1 {
-    color: #33d17a;
+    color: rgb(222, 221, 218);
     font-size: 2.5rem; 
     text-align: center;
     margin-bottom: 20px;
 }
 
 h2 {
-    color: #2ec27e;
+    color: rgb(222, 221, 218);
     font-size: 1.8rem;
     text-align: center;
     margin-bottom: 15px;
@@ -32,11 +32,11 @@ h2 {
 
 form {
     padding: 30px 40px; 
-    border: 1px dashed #3d3846;
+    border: 1px dashed rgb(36, 31, 49);
     border-radius: 20px;
     width: 100%;
     max-width: 650px; 
-    background-color: #5e5c64;
+    background-color: rgb(61, 56, 70); 
     font-size: 1.2rem;
 }
 
@@ -51,7 +51,7 @@ input {
     margin: 10px 10px;
     padding: 10px;
     font-size: 1.1rem; 
-    border: 1px solid #ccc;
+    border: 1px solid rgb(94, 92, 100);
     border-radius: 5px;
 }
 
@@ -66,14 +66,18 @@ input[type=reset], input[type=submit] {
 .btnlink {
     display: block;            
     margin: 40px auto 0 auto;  
-    background-color: rgb(154, 153, 150);
-    color: black !important;   
+    background-color: rgb(94, 92, 100);
+    color: rgb(222, 221, 218) !important;   
     text-decoration: none;    
     text-align: center;       
     border-radius: 5px;
     font-size: 1.4rem;         
     font-weight: bold;         
     padding: 15px 25px;
+}
+
+label {
+    color: #ffffff; 
 }
 
 #mydiv {

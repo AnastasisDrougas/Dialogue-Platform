@@ -36,14 +36,13 @@ public class SendMessageServlet extends HttpServlet {
             return;
         }
         
-        //Get the parameters from mainForum jsp and the user session.
+        //get the parameters from mainForum jsp and the user session.
         String topicIdParam = request.getParameter("topicId");
         String messageText  = request.getParameter("messageText");
         int userId = (Integer) session.getAttribute("userId");
         
-        //Validate parameters.
-        if (topicIdParam == null || topicIdParam.trim().isEmpty() || 
-            messageText == null || messageText.trim().isEmpty()) {
+        //validate parameters.
+        if (topicIdParam == null || topicIdParam.trim().isEmpty() || messageText == null || messageText.trim().isEmpty()) {
             response.sendRedirect(request.getContextPath() + "/mainForum.jsp?error=missingfields");
             return;
         }

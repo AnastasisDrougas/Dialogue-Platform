@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        //Get parameters from HTML fields.
+        //get parameters from HTML form.
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         
-        //Hash password for user info privacy.
+        //hash password for user info privacy.
         String passHash = Util.getHash256(password);
         
         int userId = projectDB.authenticateUser(username, passHash); //returns userID if someone matched the username and password in the db, if not returns -1.
